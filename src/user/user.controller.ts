@@ -8,6 +8,7 @@ import {
   Delete,
 } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { RolesService } from "src/roles/roles.service";
 import { CreateUserDto } from "./user.dto";
 import { User } from "./user.model";
 import { UserService } from "./user.service";
@@ -27,7 +28,7 @@ export class UserController {
   @ApiOperation({ summary: "Получение одного пользователя" })
   @ApiResponse({ status: 200, type: User })
   @Get(":id")
-  getOne(@Param() id: number) {
+  getOne(@Param("id") id: number) {
     return this.userService.getUser(id);
   }
 
