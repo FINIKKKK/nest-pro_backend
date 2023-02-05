@@ -13,6 +13,8 @@ import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 import { Roles } from "src/auth/roles.decorator";
 import { RolesGuard } from "src/auth/roles.guard";
 import { RolesService } from "src/roles/roles.service";
+import { AddRoleDto } from "./add-role.dto";
+import { BanUserDto } from "./ban-user.dto";
 import { CreateUserDto } from "./user.dto";
 import { User } from "./user.model";
 import { UserService } from "./user.service";
@@ -44,5 +46,19 @@ export class UserController {
   @Get()
   getAll() {
     return this.userService.getAllUsers();
+  }
+
+  @Roles("admin")
+  @UseGuards(RolesGuard)
+  @Post("/role")
+  addRole(@Body() dto: AddRoleDto) {
+    return this.userService.addRole(dto);
+  }
+
+  @Roles("admin")
+  @UseGuards(RolesGuard)
+  @Post("/ban")
+  banUser(@Body() dto: BanUserDto) {
+    return this.userService.banUser(dto);
   }
 }
