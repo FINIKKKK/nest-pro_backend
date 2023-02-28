@@ -2,9 +2,9 @@
 
 This project is a backend with interesting functionality.
 
-Framework: **NestJS**
-ORM: **Sequelize**
-DB: **Postgress**
+- Framework: **NestJS**
+- ORM: **Sequelize**
+- DB: **Postgress**
 
 ## Backend includes functionality 🛠:
 - Authorization and registration with JWT
